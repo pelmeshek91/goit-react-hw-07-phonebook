@@ -18,7 +18,7 @@ export const App = () => {
       </Section>
       <Section title="Contacts">
         <Filter />
-        <ContactList />
+        <ContactList/>
       </Section>
     </>
   );

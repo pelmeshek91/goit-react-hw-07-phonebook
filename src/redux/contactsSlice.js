@@ -10,6 +10,7 @@ const contactsSlice = createSlice({
     },
     [fetchContacts.fulfilled]: (state, { payload }) => {
       state.items = payload;
+
       state.isLoading = false;
     },
     [fetchContacts.rejected]: (state, { payload }) => {
@@ -40,5 +41,4 @@ const contactsSlice = createSlice({
     },
   },
 });
-console.log(contactsSlice.reducer);
 export const contactsReducer = contactsSlice.reducer;
