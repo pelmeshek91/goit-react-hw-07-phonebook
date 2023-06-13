@@ -20,6 +20,11 @@ const handleDeleteContact = ({ contacts }, { payload }) => {
 const handlePending = ({ contacts }) => {
   contacts.isLoading = true;
 };
+const handleFulfilled = ({ contacts }) => {
+  contacts.isLoading = false;
+  contacts.error = null;
+};
+
 const handleRejected = ({ contacts }, { payload }) => {
   contacts.isLoading = false;
   contacts.error = payload;
@@ -41,6 +46,9 @@ const contactsSlice = createSlice({
       .addMatcher(action => {
         return action.type.endsWith('/pending');
       }, handlePending)
+      .addMatcher(action => {
+        return action.type.endsWith('/fulfilled');
+      }, handleFulfilled)
       .addMatcher(action => {
         return action.type.endsWith('/rejected');
       }, handleRejected),
